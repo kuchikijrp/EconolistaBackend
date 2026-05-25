@@ -2,7 +2,7 @@ import { Controller, Post, Body, UseGuards, Req } from '@nestjs/common';
 import { ReceiptsService } from './receipts.service';
 import { CreateReceiptDto } from './dto/create-receipt.dto';
 import { AuthGuard } from '@nestjs/passport'; // Ou o seu Guard customizado do Supabase
-import { SupabaseGuard } from 'src/auth/supabase.guard';
+import { SupabaseGuard } from '@/auth/supabase.guard';
 
 @Controller('receipts')
 export class ReceiptsController {

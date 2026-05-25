@@ -1,8 +1,6 @@
 import { Injectable, Logger, InternalServerErrorException, HttpException, HttpStatus } from '@nestjs/common';
-import { InjectQueue } from '@nestjs/bullmq';
-import { Queue } from 'bullmq';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { ProducerService } from 'src/common/redis/producer.service';
+import { PrismaService } from '@/prisma/prisma.service';
+import { ProducerService } from '@/common/redis/producer.service';
 
 @Injectable()
 export class ReceiptsService {

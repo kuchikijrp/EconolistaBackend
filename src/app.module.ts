@@ -6,7 +6,6 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { InvoicesModule } from './invoices/invoices.module';
 import { ReceiptsModule } from './receipts/receipts.module';
-import { BullModule } from '@nestjs/bullmq';
 
 @Module({
 
