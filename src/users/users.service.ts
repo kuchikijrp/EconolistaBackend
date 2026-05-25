@@ -4,7 +4,7 @@ import {
     InternalServerErrorException
 } from '@nestjs/common';
 
-import { StripeService } from '@/common/stripe.service';
+import { StripeService } from '../common/stripe.service';
 import { PrismaService } from '@/prisma/prisma.service';
 
 @Injectable()
