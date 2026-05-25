@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 
 import { StripeService } from '../common/stripe.service';
-import { PrismaService } from '@/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class UsersService {

@@ -1,7 +1,7 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { InvoicesService } from './invoices.service';
-import { SupabaseGuard } from '@/auth/supabase.guard';
-import { GetUser } from '@/auth/get-user.decorator';
+import { SupabaseGuard } from '../auth/supabase.guard';
+import { GetUser } from '../auth/get-user.decorator';
 
 @Controller('invoices')
 export class InvoicesController {

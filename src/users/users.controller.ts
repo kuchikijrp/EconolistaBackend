@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 
 import { UsersService } from './users.service';
-import { SupabaseGuard } from '@/auth/supabase.guard';
+import { SupabaseGuard } from '../auth/supabase.guard';
 
 @Controller('users')
 export class UsersController {
