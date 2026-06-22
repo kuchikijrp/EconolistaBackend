@@ -1,0 +1,56 @@
+import { Injectable } from '@nestjs/common';
+import Redis from 'ioredis';
+import { MemoryLogger } from '../logger/memory.logger';
+
+@Injectable()
+export class ProducerService {
+  private readonly redis: Redis;
+
+  constructor(private readonly logger: MemoryLogger) {
+    this.redis = new Redis({
+      host: process.env.UPSTASH_REDIS_HOST,
+      port: Number(process.env.UPSTASH_REDIS_PORT || 6379),
+
+      username: process.env.UPSTASH_REDIS_USERNAME,
+      password: process.env.UPSTASH_REDIS_PASSWORD,
+
+      tls: {},
+    });
+  }
+
+  async enqueueReceipt(data: {
+    url: string;
+    receiptId: string;
+    userId: string;
+    uf: string;
+    requestId?: string;
+  }) {
+    const queueName = this.getQueueName(data.uf);
+
+    try {
+      await this.redis.lpush(queueName, JSON.stringify(data));
+
+      this.logger.log({
+        message: `[${queueName}] Nota enviada para fila`,
+        data: {
+          receiptId: data.receiptId,
+          userId: data.userId,
+        },
+      }, ProducerService.name);
+    } catch (error) {
+      this.logger.error({
+        message: `[${queueName}] Erro ao enviar para fila`,
+        data: {
+          error: error?.message,
+          payload: data,
+        },
+      }, error?.stack, ProducerService.name);
+
+      throw error;
+    }
+  }
+
+  private getQueueName(uf: string): string {
+    return `nfe:queue:${uf.toLowerCase()}`;
+  }
+}
