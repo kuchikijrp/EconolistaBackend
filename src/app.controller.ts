@@ -17,6 +17,7 @@ export class AppController {
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>EconoLista - Backend Console</title>
+          <link rel="icon" href="/favicon.png" />
           <style>
             :root {
               --bg: #0f172a;
