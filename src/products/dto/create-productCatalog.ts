@@ -10,7 +10,7 @@ import {
 } from 'class-validator';
 
 import { STATUSTYPE } from '@prisma/client';
-import { IsEAN } from '@/common/validators/is-ean.validator';
+import { IsEAN } from '../../common/validators/is-ean.validator';
 
 export class CreateCatalogProductDto {
     @IsString()
